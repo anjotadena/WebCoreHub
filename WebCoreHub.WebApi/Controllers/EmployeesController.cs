@@ -45,5 +45,25 @@ namespace WebCoreHub.WebApi.Controllers
 
             return Ok(employee);
         }
+
+        [HttpPost]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public ActionResult Create(Employee employee)
+        {
+            _employeeRepository.Insert(employee);
+
+            var result = _employeeRepository.SaveChanges();
+
+            if (result > 0)
+            {
+                // actionName = The name of the action to use for generating the URL
+                // routeValues = The route data to use for generating the URL
+                // value = The content value to format in the entity body
+                return CreatedAtAction("GetDetails", new { id = employee.EmployeeId }, employee);
+            }
+
+            return BadRequest();
+        }
     }
 }
