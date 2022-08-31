@@ -86,8 +86,7 @@ namespace WebCoreHub.WebApi.Controllers
         [HttpDelete("{id:int}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public ActionResult Delete(int id)
+        public ActionResult<Employee> Delete(int id)
         {
             var employee = _employeeRepository.GetDetails(id);
 
@@ -98,14 +97,9 @@ namespace WebCoreHub.WebApi.Controllers
 
             _employeeRepository.Delete(employee);
 
-            var result = _employeeRepository.SaveChanges();
-
-            if (result > 0)
-            {
-                return NoContent();
-            }
-
-            return BadRequest();
+            _employeeRepository.SaveChanges();
+        
+            return NoContent();
         }
     }
 }
