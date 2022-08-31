@@ -5,6 +5,8 @@ VisualStudioVersion = 17.1.31911.260
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebCoreHub.Models", "WebCoreHub.Models\WebCoreHub.Models.csproj", "{EFF6479C-7FC2-4B30-88AA-F3A12DF2C3C1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebCoreHub.Dal", "WebCoreHub.Dal\WebCoreHub.Dal.csproj", "{DC123224-5877-48AA-A6E6-266302B95C39}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{EFF6479C-7FC2-4B30-88AA-F3A12DF2C3C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EFF6479C-7FC2-4B30-88AA-F3A12DF2C3C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EFF6479C-7FC2-4B30-88AA-F3A12DF2C3C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC123224-5877-48AA-A6E6-266302B95C39}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC123224-5877-48AA-A6E6-266302B95C39}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC123224-5877-48AA-A6E6-266302B95C39}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC123224-5877-48AA-A6E6-266302B95C39}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
