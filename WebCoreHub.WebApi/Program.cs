@@ -1,8 +1,15 @@
+using Microsoft.EntityFrameworkCore;
+using WebCoreHub.Dal;
+using WebCoreHub.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
+
+builder.Services.AddDbContext<WebCoreHubDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("MsSqlConStr")));
+builder.Services.AddTransient<ICommonRepository<Employee>, CommonRepository<Employee>>();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
