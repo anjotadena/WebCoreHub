@@ -65,5 +65,22 @@ namespace WebCoreHub.WebApi.Controllers
 
             return BadRequest();
         }
+
+        [HttpPut]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public ActionResult Update(Employee employee)
+        {
+            _employeeRepository.Update(employee);
+
+            var result = _employeeRepository.SaveChanges();
+
+            if (result > 0)
+            {
+                return NoContent();
+            }
+
+            return BadRequest();
+        }
     }
 }
