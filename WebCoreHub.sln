@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.31911.260
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebCoreHub.Models", "WebCoreHub.Models\WebCoreHub.Models.csproj", "{EFF6479C-7FC2-4B30-88AA-F3A12DF2C3C1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebCoreHub.Models", "WebCoreHub.Models\WebCoreHub.Models.csproj", "{EFF6479C-7FC2-4B30-88AA-F3A12DF2C3C1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebCoreHub.Dal", "WebCoreHub.Dal\WebCoreHub.Dal.csproj", "{DC123224-5877-48AA-A6E6-266302B95C39}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebCoreHub.Dal", "WebCoreHub.Dal\WebCoreHub.Dal.csproj", "{DC123224-5877-48AA-A6E6-266302B95C39}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebCoreHub.WebApi", "WebCoreHub.WebApi\WebCoreHub.WebApi.csproj", "{8B676DA8-74EC-4C8C-83EA-F883660255E5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{DC123224-5877-48AA-A6E6-266302B95C39}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DC123224-5877-48AA-A6E6-266302B95C39}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DC123224-5877-48AA-A6E6-266302B95C39}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B676DA8-74EC-4C8C-83EA-F883660255E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B676DA8-74EC-4C8C-83EA-F883660255E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B676DA8-74EC-4C8C-83EA-F883660255E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B676DA8-74EC-4C8C-83EA-F883660255E5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
