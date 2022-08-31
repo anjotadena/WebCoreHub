@@ -17,9 +17,33 @@ namespace WebCoreHub.WebApi.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<Employee> Get()
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<Employee>))]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public IActionResult Get()
         {
-            return _employeeRepository.GetAll();
+            var employees = _employeeRepository.GetAll();
+
+            if (employees.Count <= 0)
+            {
+                return NotFound();
+            }
+
+            return Ok(employees);
+        }
+
+        [HttpGet("{id:int}")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Employee))]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public IActionResult GetDetails(int id)
+        {
+            var employee = _employeeRepository.GetDetails(id);
+
+            if (employee == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(employee);
         }
     }
 }
