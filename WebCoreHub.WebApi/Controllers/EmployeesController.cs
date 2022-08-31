@@ -17,9 +17,9 @@ namespace WebCoreHub.WebApi.Controllers
         }
 
         [HttpGet]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<Employee>))]
+        [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public IActionResult Get()
+        public ActionResult<IEnumerable<Employee>> Get()
         {
             var employees = _employeeRepository.GetAll();
 
@@ -32,9 +32,9 @@ namespace WebCoreHub.WebApi.Controllers
         }
 
         [HttpGet("{id:int}")]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Employee))]
+        [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public IActionResult GetDetails(int id)
+        public ActionResult<Employee> GetDetails(int id)
         {
             var employee = _employeeRepository.GetDetails(id);
 
