@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using WebCoreHub.Dal;
 using WebCoreHub.Models;
+using WebCoreHub.WebApi.Jwt;
 
 namespace WebCoreHub.WebApi.Controllers
 {
@@ -12,9 +13,12 @@ namespace WebCoreHub.WebApi.Controllers
     {
         private readonly IAuthenticationRepository _authenticationRepository;
 
-        public AuthenticationController(IAuthenticationRepository authenticationRepository)
+        private readonly ITokenManager _tokenManager;
+
+        public AuthenticationController(IAuthenticationRepository authenticationRepository, ITokenManager tokenManager)
         {
             _authenticationRepository = authenticationRepository;
+            _tokenManager = tokenManager;
         }
 
         [HttpPost("RegisterUser")]
@@ -54,7 +58,7 @@ namespace WebCoreHub.WebApi.Controllers
                 return BadRequest("Invalid credentials!");
             }
 
-            var authResponse = new AuthResponse() { IsAuthenticated = true, Role = "Dummy Role", Token = "Dummy Token" };
+            var authResponse = new AuthResponse() { IsAuthenticated = true, Role = "Dummy Role", Token = _tokenManager.GenerateToken(user) };
             
             return Ok(authResponse);
         }
