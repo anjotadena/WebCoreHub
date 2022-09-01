@@ -58,8 +58,15 @@ namespace WebCoreHub.WebApi.Controllers
                 return BadRequest("Invalid credentials!");
             }
 
-            var authResponse = new AuthResponse() { IsAuthenticated = true, Role = "Dummy Role", Token = _tokenManager.GenerateToken(user) };
-            
+            var roleName = _authenticationRepository.GetUserRole(authUser.RoleId);
+
+            var authResponse = new AuthResponse()
+            {
+                IsAuthenticated = true,
+                Role = "Dummy Role",
+                Token = _tokenManager.GenerateToken(user, roleName)
+            };
+
             return Ok(authResponse);
         }
     }

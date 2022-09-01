@@ -7,5 +7,7 @@ namespace WebCoreHub.Dal
         int RegisterUser(User user);
 
         User? CheckCredentials(User user);
+
+        string GetUserRole(int roleId);
     }
 }

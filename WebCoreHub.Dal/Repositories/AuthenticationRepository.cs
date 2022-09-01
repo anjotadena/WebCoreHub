@@ -18,6 +18,11 @@ namespace WebCoreHub.Dal
             return userCredentials;
         }
 
+        public string GetUserRole(int roleId)
+        {
+            return _dbContext.Roles.SingleOrDefault(role => role.RoleId == roleId).RoleName;
+        }
+
         public int RegisterUser(User user)
         {
             _dbContext.Users.Add(user);
