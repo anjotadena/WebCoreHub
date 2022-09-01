@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using WebCoreHub.Models;
 using WebCoreHub.Dal;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WebCoreHub.WebApi.Controllers
 {
@@ -19,6 +20,7 @@ namespace WebCoreHub.WebApi.Controllers
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [Authorize(Roles = "Employee,HR")]
         public ActionResult<IEnumerable<Employee>> Get()
         {
             var employees = _employeeRepository.GetAll();
@@ -34,6 +36,7 @@ namespace WebCoreHub.WebApi.Controllers
         [HttpGet("{id:int}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [Authorize(Roles = "Employee,HR")]
         public ActionResult<Employee> GetDetails(int id)
         {
             var employee = _employeeRepository.GetDetails(id);
@@ -49,6 +52,7 @@ namespace WebCoreHub.WebApi.Controllers
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [Authorize(Roles = "Employee,HR")]
         public ActionResult Create(Employee employee)
         {
             _employeeRepository.Insert(employee);
@@ -69,6 +73,7 @@ namespace WebCoreHub.WebApi.Controllers
         [HttpPut]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [Authorize(Roles = "Employee,HR")]
         public ActionResult Update(Employee employee)
         {
             _employeeRepository.Update(employee);
@@ -86,6 +91,7 @@ namespace WebCoreHub.WebApi.Controllers
         [HttpDelete("{id:int}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [Authorize(Roles = "HR")]
         public ActionResult<Employee> Delete(int id)
         {
             var employee = _employeeRepository.GetDetails(id);
