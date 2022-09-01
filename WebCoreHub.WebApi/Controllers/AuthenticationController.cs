@@ -63,7 +63,7 @@ namespace WebCoreHub.WebApi.Controllers
             var authResponse = new AuthResponse()
             {
                 IsAuthenticated = true,
-                Role = "Dummy Role",
+                Role = roleName,
                 Token = _tokenManager.GenerateToken(user, roleName)
             };
 
