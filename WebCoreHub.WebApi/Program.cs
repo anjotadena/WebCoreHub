@@ -22,7 +22,9 @@ builder.Services.AddTransient<IAuthenticationRepository, AuthenticationRepositor
 // For Example, in a web application creates 1 instance per each http request but uses the same instance in the other calls that same web request.
 builder.Services.AddScoped<ITokenManager, TokenManager>();
 
+// DTO AutoMapper
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
 {
     options.TokenValidationParameters = new TokenValidationParameters

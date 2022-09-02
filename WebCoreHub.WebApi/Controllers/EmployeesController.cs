@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using WebCoreHub.Models;
 using WebCoreHub.Dal;
 using Microsoft.AspNetCore.Authorization;
+using AutoMapper;
+using WebCoreHub.WebApi.DTO;
 
 namespace WebCoreHub.WebApi.Controllers
 {
@@ -12,16 +14,19 @@ namespace WebCoreHub.WebApi.Controllers
     {
         private readonly ICommonRepository<Employee> _employeeRepository;
 
-        public EmployeesController(ICommonRepository<Employee> repository)
+        private readonly IMapper _mapper;
+
+        public EmployeesController(ICommonRepository<Employee> repository, IMapper mapper)
         {
             _employeeRepository = repository;
+            _mapper = mapper;
         }
 
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [Authorize(Roles = "Employee,HR")]
-        public ActionResult<IEnumerable<Employee>> Get()
+        // [Authorize(Roles = "Employee,HR")]
+        public ActionResult<IEnumerable<EmployeeDto>> Get()
         {
             var employees = _employeeRepository.GetAll();
 
@@ -30,7 +35,7 @@ namespace WebCoreHub.WebApi.Controllers
                 return NotFound();
             }
 
-            return Ok(employees);
+            return Ok(_mapper.Map<IEnumerable<EmployeeDto>>(employees));
         }
 
         [HttpGet("{id:int}")]
