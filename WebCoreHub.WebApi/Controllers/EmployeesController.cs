@@ -1,15 +1,16 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using WebCoreHub.Models;
 using WebCoreHub.Dal;
 using Microsoft.AspNetCore.Authorization;
 using AutoMapper;
 using WebCoreHub.WebApi.DTO;
+using Microsoft.AspNetCore.Cors;
 
 namespace WebCoreHub.WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [EnableCors("PublicPolicy")]
     public class EmployeesController : ControllerBase
     {
         private readonly ICommonRepository<Employee> _employeeRepository;

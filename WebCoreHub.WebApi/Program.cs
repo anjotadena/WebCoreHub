@@ -22,6 +22,17 @@ builder.Services.AddTransient<IAuthenticationRepository, AuthenticationRepositor
 // For Example, in a web application creates 1 instance per each http request but uses the same instance in the other calls that same web request.
 builder.Services.AddScoped<ITokenManager, TokenManager>();
 
+// Add Http CORS
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("PublicPolicy", policy =>
+    {
+        policy.AllowAnyHeader();
+        policy.AllowAnyMethod();
+        policy.AllowAnyOrigin();
+    });
+});
+
 // DTO AutoMapper
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
@@ -75,6 +86,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseCors();
 
 app.UseHttpsRedirection();
 
